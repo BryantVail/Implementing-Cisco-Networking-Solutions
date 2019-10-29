@@ -65,48 +65,147 @@ const notes = {
               layers: [
                 {
                   number: 1,
-                  name: "",
-                  desc: "",
-                  notes: [""]
+                  name: "Physical Layer",
+                  desc:
+                    "convert the bit stream on to the physical medium; 1's & 0's on the computer, into the type of energy of the network medium in use.",
+                  notes: [
+                    "also provides hardware means to: Activate, maintain, and de-activate physical connections between data link entities. ",
+                    "sequencing of the bit stream",
+                    "channels of the underlying medium",
+                    "multiplexing (optionally)"
+                  ],
+                  protocols: [
+                    "Ethernet",
+                    "G.703",
+                    "FDDI",
+                    "V.35",
+                    "RJ45",
+                    "RS232",
+                    "SDH",
+                    "DWDM",
+                    "OTN"
+                  ]
                 },
                 {
                   number: 2,
-                  name: "",
-                  desc: "",
-                  notes: [""]
+                  name: "Data Link",
+                  desc: "Driver of the physical layer at the recieving node",
+                  notes: [
+                    "error detection & correction that may have occurred during transmission/reception at the physical medium.",
+                    "flow control between the two nodes to avoid any buffer overruns on either side of the data link connection- this can happen using 'PAUSE' frames in 'Ethernet', not to be confused with 'flow control' in other layers."
+                  ],
+                  protocols: [
+                    "LAPB",
+                    "802.3 Ethernet",
+                    "802.11 Wifi",
+                    "802.15.4 ZigBee",
+                    "X.25",
+                    "Point to Point Protocol (PPP)",
+                    "HDLC",
+                    "SLIP",
+                    "ATM",
+                    "Frame Relay"
+                  ]
                 },
                 {
                   number: 3,
-                  name: "",
-                  desc: "",
-                  notes: [""]
+                  name: "Network Layer",
+                  desc:
+                    "facilitate transparent transfer of datagrams between 'transport layers' at the two nodes",
+                  notes: [
+                    "finding the right intermediate nodes that may be required to send data to the destination node",
+                    "breaks down datagrams into smaller fragments- if the underlying dataLink layer is not capable of handling the datagram that is offered to the network layer for transport on the network",
+                    "connection-oriented, and ConnectionLess modes are used to describe the readiness of the communicating nodes before the process of the actual data transfer begins between 2 nodes.",
+                    ""
+                  ],
+                  aspects: [
+                    {
+                      name: "connection-oriented",
+                      desc:
+                        "connection is established between the source and the destination, and a path is defined along the network through which data transfer would happen",
+                      notes: [
+                        "packets arrive in the same order they're sent since they follow the fixed path"
+                      ],
+                      examples: [
+                        "telephone call; a connection must be established before 'talking' or 'transferring the data'."
+                      ]
+                    },
+                    {
+                      name: "connection-less",
+                      desc:
+                        "sends without first establishing a defined connection; data flows in a 'hop by hop' manner.",
+                      notes: [
+                        "no acknowledgement of reception",
+                        "may reach the destination out of order due to following the best avenue on each transmission (hop by hop)"
+                      ],
+                      examples: ["walkie-talkie/Radio transmission"]
+                    }
+                  ],
+                  protocols: ["AppleTalk", "DDP", "IP", "IPX", "CLNP", "IS-IS"]
                 },
                 {
                   number: 4,
-                  name: "",
-                  desc: "",
-                  notes: [""]
+                  name: "Transport Layer",
+                  desc:
+                    "facilitates the functional & procedural means of transferring 'variable-length' data sequences from a source to a destination host- via one or more networks.",
+                  notes: [
+                    "this layer has end-to-end significance and provides a connection-less or connection-oriented service to the 'session-layer'",
+                    "responsible for connection: 'establishment', 'management', and 'release'.",
+                    "controls the reliability of a given link through 'end-to-end' flow control, segmentation/de-segmentation, and error control",
+                    "Multiplexing various data connections over a single network layer as well"
+                  ],
+                  protocols: ["TCP", "UDP", "SCTP", "NBF"]
                 },
                 {
                   number: 5,
-                  name: "",
-                  desc: "",
-                  notes: [""]
+                  name: "Session Layer",
+                  desc:
+                    "coordinate & synchronize the dialog between presentation layers at the two endpoints & manage data exchange.",
+                  notes: [
+                    "establishes, manages, and terminates connections between applications."
+                  ],
+                  protocols: ["NetBIOS", "SAP", "SOCKS", "RPC"]
                 },
                 {
                   number: 6,
-                  name: "",
-                  desc: "",
-                  notes: [""]
+                  name: "Presentation Layer",
+                  desc:
+                    "facilitates common representation of the data transferred between application entities; provides independence from differences in data representation/syntax.",
+                  notes: [
+                    "encryption & de-cryption falls under the purview for application data",
+                    "Syntax Layer: somtimes referred to as the Syntax Layer. "
+                  ],
+                  protocols: [
+                    "MIME",
+                    "ASCII",
+                    "GIF",
+                    "JPEG",
+                    "MPEG",
+                    "MIDI",
+                    "SSL"
+                  ]
                 },
                 {
                   number: 7,
-                  name: "",
-                  desc: "",
-                  notes: [""]
+                  name: "Application Layer",
+                  desc:
+                    "applications interact with this layer of the OSI stack to engage in comms with other systems",
+                  notes: [
+                    "HTTP is an application layer protocol, Google Chrome is a software application that uses the application layer protocol HTTP",
+                    "enables users & softApps to access the network & provides user interfaces & support for services such as 'email', 'remote file access and transfer', 'shared database management', and other distributed information services."
+                  ],
+                  protocols: [
+                    "HTTP",
+                    "SMTP",
+                    "SNMP",
+                    "FTP",
+                    "DNS",
+                    "LDAP",
+                    "Telnet"
+                  ]
                 }
               ]
-            },
+            }, //end Basic Reference Model, OSI 7-Layer Model
             {
               name: "ISO/IEC 7498-1 standard",
               desc: "",
