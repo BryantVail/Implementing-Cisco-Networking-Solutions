@@ -222,9 +222,190 @@ const notes = {
               ]
             }, //end ISO/IEC 7498-1 standard
             {
-              name: "",
+              name: "The TCP/IP Protocol",
               desc: "",
-              notes: [""]
+              notes: [
+                "simplified model of the OSI Model & has only 4 broad layers (opposed to OSI's 7)"
+              ],
+              aspects: [
+                {
+                  name: "differences",
+                  desc: "",
+                  layers: [
+                    {
+                      name: "Application Layer",
+                      osiLayers: ["application", "presentation", "session"]
+                    },
+                    {
+                      name: "Transport Layer (Transmission Control Protocol",
+                      osiLayers: [
+                        "close/end-to-end connection setup",
+                        "management",
+                        "release"
+                      ],
+                      differences: [
+                        "OSI Transport layer is connection oriented. Different protocols at the transport layer in the TCP/IP model provide different types of services; TCP is connection-oriented, while 'UDP' is connectionless"
+                      ]
+                    },
+                    {
+                      name: "Network Layer, Internet Protocol",
+                      osiLayers: ["network layer"]
+                    },
+                    {
+                      name: "Network Access Layer",
+                      osiLayers: ["Data Link", "Physical"],
+                      aspects: [
+                        {
+                          name: "Network Layer",
+                          modes: ["connection-oriented", "connection-less"],
+                          difference: "Internet Protocol (IP) is connectionless"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  name: "",
+                  desc: "",
+                  notes: [""]
+                },
+                {
+                  name: "Advanced Research Projects Agency Network",
+                  abbreviation: "ARPANet",
+                  desc:
+                    "early 'packet-switching' network and the first network to implement the protocol suite 'TCP/IP",
+                  notes: [
+                    "initially funded by the US Department of Defense (DoD)",
+                    "ARPANet was the incubator for the TCP/IP protocol suite"
+                  ]
+                }
+              ]
+            }, //end The TCP/IP Protocol
+            {
+              name: "Internet Protocol",
+              abbreviation: "IP",
+              desc:
+                "Primary function of the IP is to transfer datagrams from 'source' to 'destination' & provide a network transport service.",
+              notes: ["connectionless", "send and pray protocol", ""],
+              aspects: [
+                {
+                  name: "IP Header",
+                  desc: "",
+                  aspects: [
+                    {
+                      name: "Version",
+                      desc: "4-bit field used to decode the IP address version",
+                      notes: ["4 is still most commonly used"]
+                    },
+                    {
+                      name: "Header Length",
+                      desc:
+                        "encodes the length of the IP Header in 4-byte words",
+                      notes: [
+                        "if the IPv4 Header has NO options, the header would be 20bytes long; 5 4-byte words.",
+                        "the value of the header length field in the IP Header would be '5'; first 20 bytes of the IPv4 Header are mandatory."
+                      ]
+                    },
+                    {
+                      name: "Differentiated Services Code Piont",
+                      abbreviation: "DSCP",
+                      desc:
+                        "6-bit field in the IPv4 header and is used to encode the 'Quality of Service' required by the IP datagram on the network.",
+                      notes: [
+                        "this will define if the packet will be treated as a priority packet on the network, or should be discarded if there is congestion on the network.",
+                        "this field was not in the original RFC for Internet Protocol (IP), but was added later by 'RFC 2474' to support differentiated models for QoS on IP networks. "
+                      ]
+                    },
+                    {
+                      name: "Explicit Congestion Notification",
+                      abbreviation: "ECN",
+                      bits: 2,
+                      desc:
+                        "used to explicitly notify the end-hosts if the intermediate devices have encountered congestion so that the end-devices can slow down the traffic being sent on the network- lowering the TCP Window.",
+                      notes: [
+                        "this helps managing congestion on the network even before the intermediate devices start to drop packets due to queue overruns"
+                      ]
+                    },
+                    {
+                      name: "Total Length",
+                      desc:
+                        "16-bit field that encodes the total length of the IP datagram in bytes.",
+                      bits: 16,
+                      notes: [
+                        "total Length: Length of the TCP Segment, plus the length of the IP Header",
+                        "total length of an IP datagram: '65,535', (216-1)",
+                        "1500bytes is the most commonly used length for th IP datagram on the network."
+                      ]
+                    },
+                    {
+                      name: "Identification",
+                      abbreviation: "ID",
+                      bits: 16,
+                      desc:
+                        "uniquely identifies an IP datagram for a given resource address, destination address, and protocol- such that it doesn't repeat within the max-lifetime of the datagram, which is 2-minutes according to TCP RFC793.",
+                      notes: [
+                        "RFC6864 has made some changes to the original fields that are relevant only at high data rates, and in networks that undergo fragmentation."
+                      ]
+                    },
+                    {
+                      name: "Flags",
+                      desc:
+                        "3 different flags - 3 different bits- used when the IP layer needs to send a datagram of a length that cannot be handled by the underlying data link layer.",
+                      notes: [""],
+                      types: [
+                        {
+                          name: "Must Be Zero",
+                          abbreviation: "MBZ",
+                          desc:
+                            "where bits are always send as Zero on the network",
+                          notes: [""]
+                        },
+                        {
+                          name: "Do Not Fragment",
+                          abbreviation: "DF",
+                          desc:
+                            "if set to '1', means that this packet should not be fragmented by the intermediate nodes.",
+                          notes: [
+                            "Such packets are discarded by the intermediate nodes- if there is a need to fragment these packets- and an error message is sent to the transmitting node using the 'Internet Control Message Protocol' (ICMP)"
+                          ]
+                        },
+                        {
+                          name: "",
+                          abbreviation: "",
+                          desc: "",
+                          notes: [""]
+                        }
+                      ]
+                    }, //end flags
+                    {
+                      name: "Fragment Offset",
+                      desc: "",
+                      notes: [""]
+                    },
+                    {
+                      name: "Time To Live",
+                      abbreviation: "TTL",
+                      bits: 8,
+                      desc: "",
+                      notes: [""]
+                    },
+                    {
+                      name: "Protocol",
+                      bits: 8,
+                      desc: "",
+                      notes: [""]
+                    }
+                  ]
+                },
+                {
+                  name: "",
+                  desc: ""
+                },
+                {
+                  name: "",
+                  desc: ""
+                }
+              ]
             }
           ]
         }
