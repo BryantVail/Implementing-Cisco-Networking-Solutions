@@ -379,20 +379,29 @@ const notes = {
                     }, //end flags
                     {
                       name: "Fragment Offset",
-                      desc: "",
-                      notes: [""]
+                      desc:
+                        "only used by fragmented packets to denote where in the original datagram the fragment belongs",
+                      bits: 13,
+                      notes: [
+                        "used only by the fragmented packets to denote where in the original datagram- the fragment belongs."
+                      ]
                     },
                     {
                       name: "Time To Live",
                       abbreviation: "TTL",
                       bits: 8,
-                      desc: "",
-                      notes: [""]
+                      desc:
+                        "denote the maximum number of intermediate nodes that can process the packet at the IP layer",
+                      notes: [
+                        "each intermediate node decrements the value by 1 to ensure that the IP packet doesn not get caught in an infinite routing loop; continually going back & forth between nodes",
+                        "when the field reaches '0', it is discarded by the node & an error message is sent the source of the datagram as an ICMP message."
+                      ]
                     },
                     {
                       name: "Protocol",
                       bits: 8,
-                      desc: "",
+                      desc:
+                        "used to denote what upper layer protocol is being encapsulated in the IP Packet",
                       notes: [""]
                     }
                   ]
